@@ -11,7 +11,7 @@ import {
 } from "react-native";
 
 export default function ProfileScreen() {
-  const { reset } = useAuthStore.getState();
+  const { reset, user } = useAuthStore.getState();
   const handleLogout = async () => {
     Alert.alert("Konfirmasi", "Apakah kamu yakin ingin logout?", [
       { text: "Batal", style: "cancel" },
@@ -41,16 +41,11 @@ export default function ProfileScreen() {
       />
 
       {/* Nama dan Nomor HP */}
-      <Text style={styles.name}>{"User"}</Text>
-      <Text style={styles.phone}>-00000</Text>
+      <Text style={styles.name}>{user?.role}</Text>
+      <Text style={styles.phone}>{user?.numberPhone}</Text>
 
       {/* Menu Items */}
       <View style={styles.menu}>
-        <TouchableOpacity style={styles.menuItem}>
-          <Text style={styles.menuText}>Edit Profile</Text>
-          <Text style={styles.menuArrow}>›</Text>
-        </TouchableOpacity>
-
         <TouchableOpacity style={styles.menuItem}>
           <Text style={styles.menuText}>Riwayat Pesanan</Text>
           <Text style={styles.menuArrow}>›</Text>

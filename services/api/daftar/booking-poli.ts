@@ -8,9 +8,20 @@ export type Trq_BookingPoli = {
   tanggal_daftar?: string; // YYYY-MM-DD
 };
 
+export type Trs_BookingPoli = {
+  id: number;
+  pasien_id: number;
+  poli_id: number;
+  tanggal_daftar: string;
+  jadwal: string;
+  keluhan: string;
+  created_at: string;
+  updated_at: string;
+};
+
 export async function bookingPoli(payload: Trq_BookingPoli) {
   return apiRequest(
-    baseApi.post<T_ApiResponse<any>>(`/daftar/create`, payload)
+    baseApi.post<T_ApiResponse<Trs_BookingPoli>>(`/daftar/create`, payload)
   );
 }
 export type T_ApiBookingPoliResponse = Awaited<ReturnType<typeof bookingPoli>>;

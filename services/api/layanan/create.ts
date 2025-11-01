@@ -9,6 +9,7 @@ export type Trq_CreateLayanan = {
 };
 
 export async function createLayanan(payload: Trq_CreateLayanan) {
+  console.log(" Creating layanan with payload:", payload);
   return apiRequest(
     baseApi.post<T_ApiResponse<any>>(`/layanan/create`, payload)
   );

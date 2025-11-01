@@ -5,6 +5,7 @@ import { createJSONStorage, persist } from "zustand/middleware";
 type User = {
   userId: number;
   role: string;
+  numberPhone: string;
 };
 
 export type AuthStore = {

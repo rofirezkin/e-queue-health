@@ -29,7 +29,7 @@ type LoginFormData = z.infer<typeof loginSchema>;
 
 export default function LoginScreen() {
   const { setToken, setUser } = useAuthStore.getState();
-  const { mutate, isPending } = useLogin(); 
+  const { mutate, isPending } = useLogin();
   const {
     control,
     handleSubmit,
@@ -45,7 +45,11 @@ export default function LoginScreen() {
         onSuccess: async (res) => {
           try {
             setToken(res?.data?.token ?? "");
-            setUser({ role: res?.data?.role, userId: res?.data?.id });
+            setUser({
+              role: res?.data?.role,
+              userId: res?.data?.id,
+              numberPhone: data.phone,
+            });
             router.replace("/");
           } catch (err) {
             console.error("Gagal menyimpan token:", err);

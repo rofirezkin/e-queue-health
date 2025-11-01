@@ -10,9 +10,11 @@ import { useAuthStore } from "@/store/useAuthStore";
 
 export default function TabLayout() {
   const colorScheme = useColorScheme();
-  const { token, isHydrated } = useAuthStore();
+  const { token, user, isHydrated } = useAuthStore();
 
   // ✅ Cek state navigator root
+
+  console.log("User Role:", user?.role);
 
   if (!isHydrated) {
     return (
@@ -24,6 +26,10 @@ export default function TabLayout() {
 
   if (!token) {
     return <Redirect href={"/(onboarding)/login"} />;
+  }
+
+  if (user?.role === "petugas" && token) {
+    return <Redirect href={"/(petugas)/home"} />;
   }
 
   return (
@@ -58,15 +64,7 @@ export default function TabLayout() {
           ),
         }}
       />
-      <Tabs.Screen
-        name="notification"
-        options={{
-          title: "Notifications",
-          tabBarIcon: ({ color }) => (
-            <IconSymbol size={28} name="bell.fill" color={color} />
-          ),
-        }}
-      />
+
       <Tabs.Screen
         name="account"
         options={{

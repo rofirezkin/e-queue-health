@@ -7,7 +7,6 @@ import { Stack } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 import "react-native-reanimated";
 
-import BackButton from "@/components/ui/back-button";
 import { Colors } from "@/constants/theme";
 import { useColorScheme } from "@/hooks/use-color-scheme";
 import { AppWrapper } from "@/provider/client-provider";
@@ -37,19 +36,28 @@ export default function RootLayout() {
               options={{ headerShown: false }}
             />
             <Stack.Screen
+              name="(petugas)/home"
+              options={{ headerShown: false }}
+            />
+            <Stack.Screen
+              name="(petugas)/create-poli"
+              options={{ headerShown: false }}
+            />
+            <Stack.Screen
+              name="(petugas)/detail-poli"
+              options={{ headerShown: false }}
+            />
+            <Stack.Screen
+              name="(antrian)/success"
+              options={{ headerShown: false }}
+            />
+            <Stack.Screen
               name="(antrian)/create-antrian"
-              options={{
-                title: "Buat Antrian",
-
-                headerTintColor: "#fff",
-                headerTitleStyle: { color: themeColors.background },
-                headerStyle: {
-                  backgroundColor: Colors[colorScheme ?? "light"].backgroundTab, // ini yang bener
-                },
-
-                headerBlurEffect: "light",
-                headerLeft: () => <BackButton />,
-              }}
+              options={{ headerShown: false }}
+            />
+            <Stack.Screen
+              name="(antrian)/antrian"
+              options={{ headerShown: false }}
             />
           </Stack>
           <StatusBar style="dark" backgroundColor="#000" />
